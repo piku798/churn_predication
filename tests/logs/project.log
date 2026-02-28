@@ -1,0 +1,314 @@
+2026-02-27 16:55:04,114 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:01:52,022 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:01:52,058 - src.data.data_validation - WARNING - Column 'TotalCharges' has 11 missing values
+2026-02-27 17:01:52,063 - src.data.data_validation - INFO - Validation completed with 1 warning(s) and 0 error(s)
+2026-02-27 17:01:52,064 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:01:52,073 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:01:52,078 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:01:52,101 - src.data.data_validation - INFO - Data validation passed with no critical issues
+2026-02-27 17:01:52,101 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:01:52,103 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:01:52,104 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:01:52,105 - src.features.feature - INFO - Categorical columns detected: ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+2026-02-27 17:01:52,106 - src.features.feature - INFO - Label encoded binary column: gender
+2026-02-27 17:01:52,107 - src.features.feature - INFO - Label encoded binary column: Partner
+2026-02-27 17:01:52,108 - src.features.feature - INFO - Label encoded binary column: Dependents
+2026-02-27 17:01:52,108 - src.features.feature - INFO - Label encoded binary column: PhoneService
+2026-02-27 17:01:52,113 - src.features.feature - INFO - One-hot encoded column: MultipleLines
+2026-02-27 17:01:52,117 - src.features.feature - INFO - One-hot encoded column: InternetService
+2026-02-27 17:01:52,119 - src.features.feature - INFO - One-hot encoded column: OnlineSecurity
+2026-02-27 17:01:52,122 - src.features.feature - INFO - One-hot encoded column: OnlineBackup
+2026-02-27 17:01:52,124 - src.features.feature - INFO - One-hot encoded column: DeviceProtection
+2026-02-27 17:01:52,126 - src.features.feature - INFO - One-hot encoded column: TechSupport
+2026-02-27 17:01:52,128 - src.features.feature - INFO - One-hot encoded column: StreamingTV
+2026-02-27 17:01:52,130 - src.features.feature - INFO - One-hot encoded column: StreamingMovies
+2026-02-27 17:01:52,131 - src.features.feature - INFO - One-hot encoded column: Contract
+2026-02-27 17:01:52,132 - src.features.feature - INFO - Label encoded binary column: PaperlessBilling
+2026-02-27 17:01:52,135 - src.features.feature - INFO - One-hot encoded column: PaymentMethod
+2026-02-27 17:01:52,135 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:01:52,144 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:01:52,158 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:01:52,159 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:01:52,159 - src.models.train_model - INFO - Dataset shape: (7043, 31)
+2026-02-27 17:01:52,165 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:01:52,165 - src.models.train_model - INFO - Training shape: (5634, 30)
+2026-02-27 17:01:52,165 - src.models.train_model - INFO - Testing shape: (1409, 30)
+2026-02-27 17:01:52,166 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:01:52,173 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:01:52,284 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:01:52,284 - src.models.train_model - INFO - Resampled training shape: (8278, 30)
+2026-02-27 17:01:52,284 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:01:52,298 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:01:52,309 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:01:52,309 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.72      0.80      1035
+           1       0.50      0.80      0.62       374
+
+    accuracy                           0.74      1409
+   macro avg       0.71      0.76      0.71      1409
+weighted avg       0.80      0.74      0.75      1409
+
+2026-02-27 17:01:52,309 - src.models.train_model - INFO - ROC-AUC Score: 0.8403
+2026-02-27 17:01:52,311 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:01:52,312 - src.models.train_model - INFO -  Training pipeline finished successfully
+2026-02-27 17:06:10,509 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:06:10,512 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:06:10,513 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:06:10,513 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:06:10,513 - src.features.feature - INFO - Categorical columns detected: []
+2026-02-27 17:06:10,513 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:06:10,532 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:06:10,542 - src.data.data_validation - WARNING - Column 'TotalCharges' has 11 missing values
+2026-02-27 17:06:10,546 - src.data.data_validation - INFO - Validation completed with 1 warning(s) and 0 error(s)
+2026-02-27 17:06:10,546 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:06:10,553 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:06:10,557 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:06:10,570 - src.data.data_validation - INFO - Data validation passed with no critical issues
+2026-02-27 17:06:10,570 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:06:10,571 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:06:10,572 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:06:10,573 - src.features.feature - INFO - Categorical columns detected: ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+2026-02-27 17:06:10,574 - src.features.feature - INFO - Label encoded binary column: gender
+2026-02-27 17:06:10,575 - src.features.feature - INFO - Label encoded binary column: Partner
+2026-02-27 17:06:10,576 - src.features.feature - INFO - Label encoded binary column: Dependents
+2026-02-27 17:06:10,577 - src.features.feature - INFO - Label encoded binary column: PhoneService
+2026-02-27 17:06:10,580 - src.features.feature - INFO - One-hot encoded column: MultipleLines
+2026-02-27 17:06:10,582 - src.features.feature - INFO - One-hot encoded column: InternetService
+2026-02-27 17:06:10,584 - src.features.feature - INFO - One-hot encoded column: OnlineSecurity
+2026-02-27 17:06:10,586 - src.features.feature - INFO - One-hot encoded column: OnlineBackup
+2026-02-27 17:06:10,588 - src.features.feature - INFO - One-hot encoded column: DeviceProtection
+2026-02-27 17:06:10,589 - src.features.feature - INFO - One-hot encoded column: TechSupport
+2026-02-27 17:06:10,591 - src.features.feature - INFO - One-hot encoded column: StreamingTV
+2026-02-27 17:06:10,593 - src.features.feature - INFO - One-hot encoded column: StreamingMovies
+2026-02-27 17:06:10,595 - src.features.feature - INFO - One-hot encoded column: Contract
+2026-02-27 17:06:10,596 - src.features.feature - INFO - Label encoded binary column: PaperlessBilling
+2026-02-27 17:06:10,598 - src.features.feature - INFO - One-hot encoded column: PaymentMethod
+2026-02-27 17:06:10,598 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:06:10,598 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:06:10,599 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:06:10,600 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:06:10,600 - src.models.train_model - INFO - Dataset shape: (7043, 31)
+2026-02-27 17:06:10,603 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:06:10,603 - src.models.train_model - INFO - Training shape: (5634, 30)
+2026-02-27 17:06:10,603 - src.models.train_model - INFO - Testing shape: (1409, 30)
+2026-02-27 17:06:10,603 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:06:10,609 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:06:10,698 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:06:10,698 - src.models.train_model - INFO - Resampled training shape: (8278, 30)
+2026-02-27 17:06:10,698 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:06:10,710 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:06:10,715 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:06:10,715 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.72      0.80      1035
+           1       0.50      0.80      0.62       374
+
+    accuracy                           0.74      1409
+   macro avg       0.71      0.76      0.71      1409
+weighted avg       0.80      0.74      0.75      1409
+
+2026-02-27 17:06:10,715 - src.models.train_model - INFO - ROC-AUC Score: 0.8403
+2026-02-27 17:06:10,717 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:06:10,717 - src.models.train_model - INFO -  Training pipeline finished successfully
+2026-02-27 17:06:10,720 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:06:10,721 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: tenure
+2026-02-27 17:06:10,721 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: MonthlyCharges
+2026-02-27 17:06:10,721 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:06:10,721 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:06:10,723 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:06:10,724 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:06:10,725 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:06:10,725 - src.models.train_model - INFO - Dataset shape: (3, 5)
+2026-02-27 17:07:46,091 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:07:46,093 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:07:46,094 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:07:46,094 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:07:46,095 - src.features.feature - INFO - Categorical columns detected: []
+2026-02-27 17:07:46,095 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:07:46,112 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:07:46,122 - src.data.data_validation - WARNING - Column 'TotalCharges' has 11 missing values
+2026-02-27 17:07:46,126 - src.data.data_validation - INFO - Validation completed with 1 warning(s) and 0 error(s)
+2026-02-27 17:07:46,126 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:07:46,134 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:07:46,137 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:07:46,151 - src.data.data_validation - INFO - Data validation passed with no critical issues
+2026-02-27 17:07:46,151 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:07:46,152 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:07:46,153 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:07:46,153 - src.features.feature - INFO - Categorical columns detected: ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+2026-02-27 17:07:46,154 - src.features.feature - INFO - Label encoded binary column: gender
+2026-02-27 17:07:46,155 - src.features.feature - INFO - Label encoded binary column: Partner
+2026-02-27 17:07:46,156 - src.features.feature - INFO - Label encoded binary column: Dependents
+2026-02-27 17:07:46,158 - src.features.feature - INFO - Label encoded binary column: PhoneService
+2026-02-27 17:07:46,161 - src.features.feature - INFO - One-hot encoded column: MultipleLines
+2026-02-27 17:07:46,163 - src.features.feature - INFO - One-hot encoded column: InternetService
+2026-02-27 17:07:46,165 - src.features.feature - INFO - One-hot encoded column: OnlineSecurity
+2026-02-27 17:07:46,167 - src.features.feature - INFO - One-hot encoded column: OnlineBackup
+2026-02-27 17:07:46,169 - src.features.feature - INFO - One-hot encoded column: DeviceProtection
+2026-02-27 17:07:46,171 - src.features.feature - INFO - One-hot encoded column: TechSupport
+2026-02-27 17:07:46,173 - src.features.feature - INFO - One-hot encoded column: StreamingTV
+2026-02-27 17:07:46,175 - src.features.feature - INFO - One-hot encoded column: StreamingMovies
+2026-02-27 17:07:46,176 - src.features.feature - INFO - One-hot encoded column: Contract
+2026-02-27 17:07:46,177 - src.features.feature - INFO - Label encoded binary column: PaperlessBilling
+2026-02-27 17:07:46,179 - src.features.feature - INFO - One-hot encoded column: PaymentMethod
+2026-02-27 17:07:46,179 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:07:46,180 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:07:46,182 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:07:46,182 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:07:46,182 - src.models.train_model - INFO - Dataset shape: (7043, 31)
+2026-02-27 17:07:46,185 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:07:46,186 - src.models.train_model - INFO - Training shape: (5634, 30)
+2026-02-27 17:07:46,186 - src.models.train_model - INFO - Testing shape: (1409, 30)
+2026-02-27 17:07:46,186 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:07:46,192 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:07:46,281 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:07:46,281 - src.models.train_model - INFO - Resampled training shape: (8278, 30)
+2026-02-27 17:07:46,281 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:07:46,293 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:07:46,297 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:07:46,297 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.72      0.80      1035
+           1       0.50      0.80      0.62       374
+
+    accuracy                           0.74      1409
+   macro avg       0.71      0.76      0.71      1409
+weighted avg       0.80      0.74      0.75      1409
+
+2026-02-27 17:07:46,297 - src.models.train_model - INFO - ROC-AUC Score: 0.8403
+2026-02-27 17:07:46,299 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:07:46,299 - src.models.train_model - INFO -  Training pipeline finished successfully
+2026-02-27 17:07:46,302 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:07:46,302 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: tenure
+2026-02-27 17:07:46,303 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: MonthlyCharges
+2026-02-27 17:07:46,303 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:07:46,303 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:07:46,305 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:07:46,306 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:07:46,306 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:07:46,306 - src.models.train_model - INFO - Dataset shape: (6, 4)
+2026-02-27 17:07:46,307 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:07:46,307 - src.models.train_model - INFO - Training shape: (4, 3)
+2026-02-27 17:07:46,307 - src.models.train_model - INFO - Testing shape: (2, 3)
+2026-02-27 17:07:46,307 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:07:46,309 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:07:46,309 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:07:46,309 - src.models.train_model - INFO - Resampled training shape: (4, 3)
+2026-02-27 17:07:46,309 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:07:46,310 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:07:46,313 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:07:46,313 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.50      1.00      0.67         1
+           1       0.00      0.00      0.00         1
+
+    accuracy                           0.50         2
+   macro avg       0.25      0.50      0.33         2
+weighted avg       0.25      0.50      0.33         2
+
+2026-02-27 17:07:46,313 - src.models.train_model - INFO - ROC-AUC Score: 0.0000
+2026-02-27 17:07:46,315 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:07:46,315 - src.models.train_model - INFO -  Training pipeline finished successfully
+2026-02-27 17:10:04,783 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:10:04,786 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:10:04,787 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:10:04,788 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:10:04,788 - src.features.feature - INFO - Categorical columns detected: []
+2026-02-27 17:10:04,788 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:10:04,804 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-27 17:10:04,814 - src.data.data_validation - WARNING - Column 'TotalCharges' has 11 missing values
+2026-02-27 17:10:04,818 - src.data.data_validation - INFO - Validation completed with 1 warning(s) and 0 error(s)
+2026-02-27 17:10:04,819 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:10:04,827 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:10:04,831 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:10:04,861 - src.data.data_validation - INFO - Data validation passed with no critical issues
+2026-02-27 17:10:04,861 - src.features.feature - INFO - Starting feature engineering...
+2026-02-27 17:10:04,863 - src.features.feature - INFO - Dropped customerID column
+2026-02-27 17:10:04,864 - src.features.feature - INFO - Encoded target column
+2026-02-27 17:10:04,865 - src.features.feature - INFO - Categorical columns detected: ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+2026-02-27 17:10:04,866 - src.features.feature - INFO - Label encoded binary column: gender
+2026-02-27 17:10:04,867 - src.features.feature - INFO - Label encoded binary column: Partner
+2026-02-27 17:10:04,868 - src.features.feature - INFO - Label encoded binary column: Dependents
+2026-02-27 17:10:04,869 - src.features.feature - INFO - Label encoded binary column: PhoneService
+2026-02-27 17:10:04,873 - src.features.feature - INFO - One-hot encoded column: MultipleLines
+2026-02-27 17:10:04,876 - src.features.feature - INFO - One-hot encoded column: InternetService
+2026-02-27 17:10:04,879 - src.features.feature - INFO - One-hot encoded column: OnlineSecurity
+2026-02-27 17:10:04,882 - src.features.feature - INFO - One-hot encoded column: OnlineBackup
+2026-02-27 17:10:04,884 - src.features.feature - INFO - One-hot encoded column: DeviceProtection
+2026-02-27 17:10:04,886 - src.features.feature - INFO - One-hot encoded column: TechSupport
+2026-02-27 17:10:04,888 - src.features.feature - INFO - One-hot encoded column: StreamingTV
+2026-02-27 17:10:04,889 - src.features.feature - INFO - One-hot encoded column: StreamingMovies
+2026-02-27 17:10:04,891 - src.features.feature - INFO - One-hot encoded column: Contract
+2026-02-27 17:10:04,892 - src.features.feature - INFO - Label encoded binary column: PaperlessBilling
+2026-02-27 17:10:04,894 - src.features.feature - INFO - One-hot encoded column: PaymentMethod
+2026-02-27 17:10:04,894 - src.features.feature - INFO - Feature engineering completed successfully
+2026-02-27 17:10:04,894 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:10:04,896 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:10:04,896 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:10:04,896 - src.models.train_model - INFO - Dataset shape: (7043, 31)
+2026-02-27 17:10:04,899 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:10:04,899 - src.models.train_model - INFO - Training shape: (5634, 30)
+2026-02-27 17:10:04,899 - src.models.train_model - INFO - Testing shape: (1409, 30)
+2026-02-27 17:10:04,900 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:10:04,905 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:10:04,987 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:10:04,987 - src.models.train_model - INFO - Resampled training shape: (8278, 30)
+2026-02-27 17:10:04,987 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:10:04,999 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:10:05,003 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:10:05,003 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.72      0.80      1035
+           1       0.50      0.80      0.62       374
+
+    accuracy                           0.74      1409
+   macro avg       0.71      0.76      0.71      1409
+weighted avg       0.80      0.74      0.75      1409
+
+2026-02-27 17:10:05,003 - src.models.train_model - INFO - ROC-AUC Score: 0.8403
+2026-02-27 17:10:05,005 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:10:05,005 - src.models.train_model - INFO -  Training pipeline finished successfully
+2026-02-27 17:10:05,008 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-27 17:10:05,009 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: tenure
+2026-02-27 17:10:05,009 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: MonthlyCharges
+2026-02-27 17:10:05,009 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-27 17:10:05,010 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-27 17:10:05,011 - src.models.train_model - INFO -  Starting Model Training Pipeline
+2026-02-27 17:10:05,013 - src.models.train_model - INFO - Configuration loaded successfully
+2026-02-27 17:10:05,013 - src.models.train_model - INFO - Target column: Churn
+2026-02-27 17:10:05,013 - src.models.train_model - INFO - Dataset shape: (6, 4)
+2026-02-27 17:10:05,014 - src.models.train_model - INFO - Train-test split completed
+2026-02-27 17:10:05,014 - src.models.train_model - INFO - Training shape: (4, 3)
+2026-02-27 17:10:05,014 - src.models.train_model - INFO - Testing shape: (2, 3)
+2026-02-27 17:10:05,014 - src.models.train_model - INFO - Using StandardScaler
+2026-02-27 17:10:05,016 - src.models.train_model - INFO - Feature scaling completed
+2026-02-27 17:10:05,016 - src.models.train_model - INFO - SMOTE applied to training data
+2026-02-27 17:10:05,016 - src.models.train_model - INFO - Resampled training shape: (4, 3)
+2026-02-27 17:10:05,016 - src.models.train_model - INFO - Model initialized with configuration parameters
+2026-02-27 17:10:05,017 - src.models.train_model - INFO - Model training completed successfully
+2026-02-27 17:10:05,021 - src.models.train_model - INFO - Model evaluation completed
+2026-02-27 17:10:05,021 - src.models.train_model - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.50      1.00      0.67         1
+           1       0.00      0.00      0.00         1
+
+    accuracy                           0.50         2
+   macro avg       0.25      0.50      0.33         2
+weighted avg       0.25      0.50      0.33         2
+
+2026-02-27 17:10:05,021 - src.models.train_model - INFO - ROC-AUC Score: 0.0000
+2026-02-27 17:10:05,023 - src.models.train_model - INFO - Model and scaler saved successfully
+2026-02-27 17:10:05,023 - src.models.train_model - INFO -  Training pipeline finished successfully

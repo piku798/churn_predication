@@ -1,0 +1,3 @@
+2026-02-24 21:49:03,261 - src.data.data_loader - INFO - Data loaded successfully from C:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-24 21:49:03,261 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-24 21:49:03,279 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully

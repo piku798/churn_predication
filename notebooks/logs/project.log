@@ -1,0 +1,13 @@
+2026-02-24 19:16:39,718 - src.data.data_loader - ERROR - Error loading data from c:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\notebooks\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv: [Errno 2] No such file or directory: 'c:\\Users\\nnaya\\Desktop\\JOB\\project\\Customer Churn\\churn_prediction\\notebooks\\data\\raw\\WA_Fn-UseC_-Telco-Customer-Churn.csv'
+2026-02-24 19:19:29,515 - src.data.data_loader - INFO - Data loaded successfully from c:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-24 19:53:45,228 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-24 19:53:45,253 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-24 19:53:45,264 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-24 21:39:46,137 - src.data.data_loader - INFO - Data loaded successfully from c:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-24 21:39:48,908 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-24 21:39:48,937 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-24 21:39:48,949 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
+2026-02-25 18:50:01,244 - src.data.data_loader - INFO - Data loaded successfully from c:\Users\nnaya\Desktop\JOB\project\Customer Churn\churn_prediction\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-02-25 18:50:15,795 - src.data.data_preprocessing - INFO - Starting basic preprocessing...
+2026-02-25 18:50:15,834 - src.data.data_preprocessing - INFO - Filled missing values in numeric column: TotalCharges
+2026-02-25 18:50:15,849 - src.data.data_preprocessing - INFO - Basic preprocessing completed successfully
