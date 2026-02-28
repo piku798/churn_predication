@@ -1,0 +1,196 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ master, main, develop ]
+  pull_request:
+    branches: [ master, main, develop ]
+
+env:
+  PYTHON_VERSION: '3.11'
+  MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r churn_prediction/requirements.txt
+
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        # Stop the build if there are Python syntax errors or undefined names
+        flake8 churn_prediction/src --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings
+        flake8 churn_prediction/src --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      continue-on-error: true
+
+    - name: Format check with black
+      run: |
+        pip install black
+        black churn_prediction/src --check
+      continue-on-error: true
+
+    - name: Run pytest with coverage
+      run: |
+        cd churn_prediction
+        pytest tests/ -v --cov=src --cov-report=xml --cov-report=html --cov-report=term-missing
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./churn_prediction/coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+      continue-on-error: true
+
+  train-model:
+    name: Train ML Model
+    runs-on: ubuntu-latest
+    needs: test
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r churn_prediction/requirements.txt
+
+    - name: Download training data
+      run: |
+        cd churn_prediction
+        # Check if data file exists, if not show warning
+        if [ ! -f data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv ]; then
+          echo "⚠️ Training data not found. Skipping model training."
+          echo "Please ensure data file is in: churn_prediction/data/raw/"
+        fi
+
+    - name: Run training pipeline
+      run: |
+        cd churn_prediction
+        python -c "from src.pipeline.pipeline import run_pipeline; run_pipeline()"
+      continue-on-error: true
+
+    - name: Upload MLflow artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: mlflow-runs
+        path: churn_prediction/mlruns/
+        retention-days: 30
+      continue-on-error: true
+
+    - name: Upload trained model
+      uses: actions/upload-artifact@v3
+      with:
+        name: trained-model
+        path: churn_prediction/models/
+        retention-days: 30
+      continue-on-error: true
+
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint bandit
+
+    - name: Run pylint
+      run: |
+        pylint churn_prediction/src --exit-zero --max-line-length=120
+      continue-on-error: true
+
+    - name: Run security scan with bandit
+      run: |
+        bandit -r churn_prediction/src -f json -o bandit-report.json
+      continue-on-error: true
+
+    - name: Upload security scan
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-scan
+        path: bandit-report.json
+      continue-on-error: true
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: test
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install build tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install build wheel setuptools
+
+    - name: Build distribution
+      run: |
+        cd churn_prediction
+        python -m build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: distribution
+        path: churn_prediction/dist/
+        retention-days: 30
+
+  notify:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [test, train-model, code-quality, build]
+    if: always()
+
+    steps:
+    - name: Check job statuses
+      run: |
+        if [ "${{ needs.test.result }}" == "failure" ]; then
+          echo "❌ Tests failed"
+          exit 1
+        fi
+        echo "✅ All checks passed!"

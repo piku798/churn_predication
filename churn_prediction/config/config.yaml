@@ -1,0 +1,25 @@
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "Customer_Churn_Experiment"
+
+data:
+  target_column: "Churn"
+  test_size: 0.2
+  random_state: 42
+
+scaler:
+  type: "standard"
+
+smote:
+  sampling_strategy: "auto"
+  random_state: 42
+
+model:
+  max_iter: 500
+  C: 1.0
+  solver: "lbfgs"
+
+paths:
+  model_dir: "models"
+  model_name: "model.pkl"
+  scaler_name: "scaler.pkl"

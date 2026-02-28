@@ -1,0 +1,85 @@
+name: Integration Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  integration-tests:
+    name: End-to-End Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r churn_prediction/requirements.txt
+
+    - name: Download sample data
+      run: |
+        cd churn_prediction
+        mkdir -p data/raw
+        # For now, create a mock dataset if real data is not available
+        python -c "
+        import pandas as pd
+        import numpy as np
+        np.random.seed(42)
+
+        n_samples = 100
+        data = {
+            'customerID': [f'ID_{i}' for i in range(n_samples)],
+            'tenure': np.random.randint(1, 72, n_samples),
+            'MonthlyCharges': np.random.uniform(20, 120, n_samples),
+            'TotalCharges': np.random.uniform(100, 8500, n_samples),
+            'Contract': np.random.choice(['Month-to-month', 'One year', 'Two year'], n_samples),
+            'Churn': np.random.choice(['No', 'Yes'], n_samples, p=[0.7, 0.3])
+        }
+        df = pd.DataFrame(data)
+        df.to_csv('data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv', index=False)
+        print('Sample data created successfully')
+        "
+
+    - name: Run full pipeline
+      run: |
+        cd churn_prediction
+        python -m src.pipeline.pipeline
+
+    - name: Verify artifacts
+      run: |
+        cd churn_prediction
+        if [ -f models/model.pkl ] && [ -f models/scaler.pkl ]; then
+          echo "✅ Model artifacts created successfully"
+        else
+          echo "❌ Model artifacts not found"
+          exit 1
+        fi
+
+    - name: Test model loading
+      run: |
+        cd churn_prediction
+        python -c "
+        import joblib
+        model = joblib.load('models/model.pkl')
+        scaler = joblib.load('models/scaler.pkl')
+        print('✅ Model and scaler loaded successfully')
+        print(f'Model type: {type(model).__name__}')
+        print(f'Scaler type: {type(scaler).__name__}')
+        "
+
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: integration-test-results
+        path: churn_prediction/models/
+      if: always()

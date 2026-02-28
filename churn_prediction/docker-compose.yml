@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./models:/app/models
+    environment:
+      MLFLOW_TRACKING_URI: sqlite:///mlruns/mlflow.db
+    command: mlflow ui --host 0.0.0.0
+
+  training:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mlflow
+    volumes:
+      - ./data:/app/data
+      - ./mlruns:/app/mlruns
+      - ./models:/app/models
+      - ./logs:/app/logs
+    environment:
+      MLFLOW_TRACKING_URI: sqlite:///mlruns/mlflow.db
+    command: python -c "from src.pipeline.pipeline import run_pipeline; run_pipeline()"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mlflow
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+    environment:
+      MLFLOW_TRACKING_URI: sqlite:///mlruns/mlflow.db
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
